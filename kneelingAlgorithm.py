@@ -68,7 +68,8 @@ class kneelingDetection:
         
         legForward = self.kneelingDetection()
         
-        if legForward == "X" or legForward == "R":
+        
+        if legForward == "R" or (time.time() - self.timeLastKneeling < .5 and legForward == "X"):
             torque = self.torqueEstimation(self.kneeAngleR, self.thighRAngV)
         else:
             torque = 0
