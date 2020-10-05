@@ -63,8 +63,8 @@ class kneelingDetection:
         self.thighLAngV  = thighLAngV
         self.shankLAngV  = shankLAngV
         
-        self.kneeAngleR = kneeAngleR
-        self.kneeAngleL = kneeAngleL
+        self.kneeAngleR = 180-kneeAngleR
+        self.kneeAngleL = 180-kneeAngleL
         
         legForward = self.kneelingDetection()
         
