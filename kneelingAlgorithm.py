@@ -40,7 +40,7 @@ class kneelingDetection:
         
         #torqueWindow()
         self.deliverTorque = False
-        self.timeLastKneeling = 0
+        self.timeLastKneeling = time.time()
     
     
     
@@ -69,7 +69,7 @@ class kneelingDetection:
         legForward = self.kneelingDetection()
         
         if legForward == "X" or legForward == "R":
-            torque = self.torqueEstimation(kneeAngleR, thighRAngV)
+            torque = self.torqueEstimation(self.kneeAngleR, self.thighRAngV)
         else:
             torque = 0
             
@@ -89,10 +89,10 @@ class kneelingDetection:
         #mass - kilograms of subject
         #angVel and kneeAngle are for leg with device. angVel is for thigh.
         
-        torqueOutput = (self.A * kneeAngle) + (self.B * angVel) + self.C
+        torqueOutput = (self.A * (180-kneeAngle)) + (self.B * angVel) + self.C
         torqueOutput = torqueOutput * self.NMKG * self.mass * (12/15)
         
-        if self.torqueWindow(kneeAngle):
+        if self.torqueWindow():
             return torqueOutput
         else:
             return 0
@@ -107,9 +107,9 @@ class kneelingDetection:
     
     
     
-    def torqueWindow(self, kneeAngle):
+    def torqueWindow(self):
         import time
-        if self.isKneeling == True or (time.time() - self.timeLastKneeling < .5 and kneeAngle < 170):
+        if self.isKneeling == True or (time.time() - self.timeLastKneeling < .5 and self.kneeAngleR < 170):
             self.deliverTorque = True
             if self.isKneeling == True:
                 self.timeLastKneeling = time.time()
@@ -186,6 +186,7 @@ class kneelingDetection:
         
         
     #Test if angle is past a rather large and easy to determine threshold (60 degrees from straight)
+    #re-work to use sum of angles for a closer detection
         if (self.kneeAngleL < 120) and (self.kneeAngleR < 120):
             self.isKneeling = True
         else:
