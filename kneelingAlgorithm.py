@@ -113,7 +113,7 @@ class kneelingDetection:
     def torqueWindow(self):
         #Knee angles oriented with staight leg at 180 degrees
         import time
-        if :
+        if time.time() - self.timeLastKneeling < 1 and self.kneeAngleR < 170 and self.run_loop:
             self.run_loop = True
         else:
             self.run_loop = False
