@@ -41,6 +41,7 @@ class kneelingDetection:
         #torqueWindow()
         self.deliverTorque = False
         self.timeLastKneeling = time.time()
+        self.run_loop = False
     
     
     
@@ -69,7 +70,7 @@ class kneelingDetection:
         legForward = self.kneelingDetection()
         
         
-        if legForward == "R" or (time.time() - self.timeLastKneeling < .5 and legForward == "X"):
+        if legForward == "R" or legForward == "X":
             torque = self.torqueEstimation(self.kneeAngleR, self.thighRAngV)
         else:
             torque = 0
@@ -89,6 +90,7 @@ class kneelingDetection:
         #NMKG - Newton-meters per kilogram (for initial tests, 0.15, 0.30, 0.45)
         #mass - kilograms of subject
         #angVel and kneeAngle are for leg with device. angVel is for thigh.
+        #Knee angles oriented with staight leg at 0 degrees
         
         torqueOutput = (self.A * (180-kneeAngle)) + (self.B * angVel) + self.C
         torqueOutput = torqueOutput * self.NMKG * self.mass * (12/15)
@@ -109,9 +111,16 @@ class kneelingDetection:
     
     
     def torqueWindow(self):
+        #Knee angles oriented with staight leg at 180 degrees
         import time
-        if self.isKneeling == True or (time.time() - self.timeLastKneeling < .5 and self.kneeAngleR < 170):
+        if :
+            self.run_loop = True
+        else:
+            self.run_loop = False
+            
+        if self.isKneeling == True or self.run_loop:
             self.deliverTorque = True
+            self.run_loop = True
             if self.isKneeling == True:
                 self.timeLastKneeling = time.time()
         else:
@@ -133,10 +142,7 @@ class kneelingDetection:
         
     def kneelingDetection(self):
         #Knee angles oriented with staight leg at 180 degrees
-        
         import numpy as np
-        
-        kneelingGyLimit = 60
         
         legForward = ""
         
