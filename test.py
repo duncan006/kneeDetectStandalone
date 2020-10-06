@@ -18,7 +18,10 @@ LKA = [12.58934588,12.58934588,12.58934588,12.58934588,12.58934588,12.58934588,1
 
 
 import time
+from kneelingAlgorithm import *
+
 kneelDetect = kneelingDetection(0.15, 80)
+
 for enum, x in enumerate(timeArray):
   torque = kneelDetect.getTorque(RTA[enum], RSA[enum], LTA[enum], LSA[enum], RTG[enum], RSG[enum], LTG[enum], LSG[enum], RKA[enum], LKA[enum])
   time.sleep(x)
