@@ -1,5 +1,28 @@
 #!/usr/bin/env python3
 
+
+def send_over_serial(msgArray, serialSend):
+import struct
+#IMPORTANT: msgArray NEW FORMAT IN ACCORDANCE WITH ALBORZ COMMUNICATION PROTOCOL
+#[ 111, Torque ]
+    sendStr = bytearray()
+    
+    for enum, x in enumerate(msgArray):
+
+        #if enum == 0 or (enum >= 51 and enum < 53):
+        #    packedString = bytearray(struct.pack("<B", x))
+        #    sendStr += packedString
+        #if enum > 1 and enum < 51 or (enum >= 53):
+        #    packedString = bytearray(struct.pack("<h", x))
+        #    sendStr += packedString
+        #if enum == 1:
+        #    packedString = bytearray(struct.pack("<f", x))
+        #    sendStr += packedString
+    
+    #Encode with UTF-8 and send over serial.
+    serialSend.write(sendStr)
+
+
 class kneelingDetection:
     def __init__(self, NMKG, mass):
         self.NMKG = NMKG
