@@ -84,4 +84,5 @@ def send_to_teensy(torqueLeft, torqueRight, serialPort):
     sendStr += bytearray(struct.pack("B", 52))
     sendStr += bytearray(struct.pack("<h", int(torqueLeft * 1000)))
     sendStr += bytearray(struct.pack("<h", int(torqueRight * 1000)))
+    print(sendStr)
     serialPort.write(sendStr)
