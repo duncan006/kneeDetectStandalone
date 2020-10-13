@@ -1,4 +1,5 @@
 from serialSend import *
+import serial
 
 teensyPort = serial.Serial("/dev/ttyS0", baudrate=115200, timeout=3.0)
 
