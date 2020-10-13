@@ -10,4 +10,4 @@ while True:
     if dataReceived:
         torqueL = teensyArray[0]
         torqueR = teensyArray[1]
-        send_to_teensy(torqueL, torqueR, teensyPort)
+        send_to_teensy(2345, 4567, teensyPort)
