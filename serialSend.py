@@ -20,47 +20,47 @@ def receive_from_teensy(serialPort):
             
             RTorqueLO = serialPort.read() #Byte 6
             RTorqueHI = serialPort.read() #Byte 7
-            RTorque = struct.unpack('<h', RTorqueLO + RTorqueHI)
+            RTorque = struct.unpack('<h', RTorqueHI + RTorqueLO)
             
             LKneeAngleLO = serialPort.read() #Byte 8
             LKneeAngleHI = serialPort.read() #Byte 9
-            LKneeAngle = struct.unpack('<h', LKneeAngleLO + LKneeAngleHI)
+            LKneeAngle = struct.unpack('<h', LKneeAngleHI + LKneeAngleLO)
             
             RKneeAngleLO = serialPort.read() #Byte 10
             RKneeAngleHI = serialPort.read() #Byte 11
-            RKneeAngle = struct.unpack('<h', RKneeAngleLO + RKneeAngleHI)
+            RKneeAngle = struct.unpack('<h', RKneeAngleHI + RKneeAngleLO)
             
             LTAngleLO = serialPort.read() #Byte 12
             LTAngleHI = serialPort.read() #Byte 13
-            LTAngle = struct.unpack('<h', LTAngleLO + LTAngleHI)
+            LTAngle = struct.unpack('<h', LTAngleHI + LTAngleLO)
             
             RTAngleLO = serialPort.read() #Byte 14
             RTAngleHI = serialPort.read() #Byte 15
-            RTAngle = struct.unpack('<h', RTAngleLO + RTAngleHI)
+            RTAngle = struct.unpack('<h', RTAngleHI + RTAngleLO)
             
             LSAngleLO = serialPort.read() #Byte 16
             LSAngleHI = serialPort.read() #Byte 17
-            LSAngle = struct.unpack('<h', LSAngleLO + LSAngleHI)
+            LSAngle = struct.unpack('<h', LSAngleHI + LSAngleLO)
             
             RSAngleLO = serialPort.read() #Byte 18
             RSAngleHI = serialPort.read() #Byte 19
-            RSAngle = struct.unpack('<h', RSAngleLO + RSAngleHI)
+            RSAngle = struct.unpack('<h', RSAngleHI + RSAngleLO)
             
             LTangVLO = serialPort.read() #Byte 20
             LTangVHI = serialPort.read() #Byte 21
-            LTangV = struct.unpack('<h', LTangVLO + LTangVHI)
+            LTangV = struct.unpack('<h', LTangVHI + LTangVLO)
             
             RTangVLO = serialPort.read() #Byte 22
             RTangVHI = serialPort.read() #Byte 23
-            RTangV = struct.unpack('<h', RTangVLO + RTangVHI)
+            RTangV = struct.unpack('<h', RTangVHI + RTangVLO)
             
             LSangVLO = serialPort.read() #Byte 24
             LSangVHI = serialPort.read() #Byte 25
-            LSangV = struct.unpack('<h', LSangVLO + LSangVHI)
+            LSangV = struct.unpack('<h', LSangVHI + LSangVLO)
             
             RSangVLO = serialPort.read() #Byte 26
             RSangVHI = serialPort.read() #Byte 27
-            RSangV = struct.unpack('<h', RSangVLO + RSangVHI)
+            RSangV = struct.unpack('<h', RSangVHI + RSangVLO)
             
             outputArray = [LTorque[0], RTorque[0], LKneeAngle[0], RKneeAngle[0], LTAngle[0], RTAngle[0], LSAngle[0], RSAngle[0], LTangV[0], RTangV[0], LSangV[0], RSangV[0]]
             receivedData = True
