@@ -5,7 +5,7 @@ def receive_from_teensy(serialPort):
     firstChar = serialPort.read() #Byte 1
     print(firstChar)
     
-    if (firstChar == 165):
+    if (firstChar == b'\xa5'):
         secondChar = serialPort.read() #Byte 2
         print("second char: ")
         print(secondChar)
