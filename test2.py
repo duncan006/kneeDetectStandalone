@@ -3,7 +3,7 @@
 from serialSend import *
 import serial
 
-teensyPort = serial.Serial("/dev/ttyS0", baudrate=115200, timeout=3.0)
+teensyPort = serial.Serial("/dev/ttyS0", baudrate=256000, timeout=3.0)
 
 while True:
     dataReceived, teensyArray = receive_from_teensy(teensyPort)
