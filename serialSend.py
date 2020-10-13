@@ -3,9 +3,12 @@ def receive_from_teensy(serialPort):
     outputArray = []
     
     firstChar = serialPort.read() #Byte 1
+    print(firstChar)
     
     if (firstChar == 165):
         secondChar = serialPort.read() #Byte 2
+        print("second char: ")
+        print(secondChar)
         if (secondChar == 90):
             dataSize = serialPort.read() #Byte 3
             dataSizeInt = struct.unpack('B',dataSize)
