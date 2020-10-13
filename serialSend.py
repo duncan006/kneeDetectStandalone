@@ -9,7 +9,7 @@ def receive_from_teensy(serialPort):
         secondChar = serialPort.read() #Byte 2
         print("second char: ")
         print(secondChar)
-        if (secondChar == 90):
+        if (secondChar == b'\x5a'):
             dataSize = serialPort.read() #Byte 3
             dataSizeInt = struct.unpack('B',dataSize)
             
