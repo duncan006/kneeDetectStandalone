@@ -62,7 +62,7 @@ def receive_from_teensy(serialPort):
             RSangVHI = serialPort.read() #Byte 27
             RSangV = struct.unpack('<h', RSangVLO + RSangVHI)
             
-            outputArray = [LTorque, RTorque, LKneeAngle, RKneeAngle, LTAngle, RTAngle, LSAngle, RSAngle, LTangV, RTangV, LSangV, RSangV]
+            outputArray = [LTorque[0], RTorque[0], LKneeAngle[0], RKneeAngle[0], LTAngle[0], RTAngle[0], LSAngle[0], RSAngle[0], LTangV[0], RTangV[0], LSangV[0], RSangV[0]]
             receivedData = True
             print(outputArray)
     
