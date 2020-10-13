@@ -1,4 +1,5 @@
 def receive_from_teensy(serialPort):
+    import struct
     receivedData = False
     outputArray = []
     
