@@ -4,12 +4,9 @@ def receive_from_teensy(serialPort):
     outputArray = []
     
     firstChar = serialPort.read() #Byte 1
-    print(firstChar)
     
     if (firstChar == b'\xa5'):
         secondChar = serialPort.read() #Byte 2
-        print("second char: ")
-        print(secondChar)
         if (secondChar == b'\x5a'):
             dataSize = serialPort.read() #Byte 3
             dataSizeInt = struct.unpack('B',dataSize)
