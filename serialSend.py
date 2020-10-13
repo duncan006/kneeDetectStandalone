@@ -16,7 +16,7 @@ def receive_from_teensy(serialPort):
             
             LTorqueLO = serialPort.read() #Byte 4
             LTorqueHI = serialPort.read() #Byte 5
-            LTorque = struct.unpack('<H', LTorqueLO + LTorqueHI)
+            LTorque = struct.unpack('<h', LTorqueHI + LTorqueLO)
             
             RTorqueLO = serialPort.read() #Byte 6
             RTorqueHI = serialPort.read() #Byte 7
